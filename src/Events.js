@@ -11,9 +11,13 @@ class Events extends React.Component {
       events: [],
       filter: '',
       newName: '',
+      newNameValid: false,
       newPlace: '',
+      newPlaceValid: false,
       newDate: '',
-      newTime: ''
+      newDateValid: false,
+      newTime: '',
+      newTimeValid: false
     };
   }
 
@@ -48,26 +52,34 @@ class Events extends React.Component {
   };
 
   onNameChange(event) {
+    const value = event.currentTarget.value;
     this.setState({
-      newName: event.currentTarget.value
+      newName: value,
+      newNameValid: value.length > 0
     });
   }
 
   onPlaceChange(event) {
+    const value = event.currentTarget.value;
     this.setState({
-      newPlace: event.currentTarget.value
+      newPlace: value,
+      newPlaceValid: value.length > 0
     });
   }
 
   onDateChange(event) {
+    const value = event.currentTarget.value;
     this.setState({
-      newDate: event.currentTarget.value
+      newDate: value,
+      newDateValid: value.length > 0
     });
   }
 
   onTimeChange(event) {
+    const value = event.currentTarget.value;
     this.setState({
-      newTime: event.currentTarget.value
+      newTime: value,
+      newTimeValid: value.length > 0
     });
   }
 
@@ -119,6 +131,10 @@ class Events extends React.Component {
                   place={this.state.newPlace}
                   date={this.state.newDate}
                   time={this.state.newTime}
+                  nameValid={this.state.newNameValid}
+                  placeValid={this.state.newPlaceValid}
+                  dateValid={this.state.newDateValid}
+                  timeValid={this.state.newTimeValid}
                   onNameChange={this.onNameChange.bind(this)}
                   onPlaceChange={this.onPlaceChange.bind(this)}
                   onDateChange={this.onDateChange.bind(this)}
