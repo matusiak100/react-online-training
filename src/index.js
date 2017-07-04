@@ -1,29 +1,7 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import events from './data/events.json';
+import renderEvents from './Events';
 
-const getItems = () => {
-  return (
-    <ul>
-      {events.map(item => {
-        const date = new Date(item.date);
-
-        if (date >= Date.now()) {
-          return (
-            <li key={item.id}>
-              <strong>{item.name}</strong><br />
-              Gdzie: {item.place}<br />
-              Kiedy: {item.date} - {item.time}
-            </li>
-          );
-        }
-
-        return null;
-      })}
-    </ul>
-  );
-};
-
-ReactDOM.render(getItems(), document.getElementById('root'));
+ReactDOM.render(renderEvents(events), document.getElementById('root'));
