@@ -47,28 +47,24 @@ class Events extends React.Component {
     });
   };
 
-  onNameChange(event) {
-    this.setState({
-      newName: event.currentTarget.value
-    });
-  }
-
-  onPlaceChange(event) {
-    this.setState({
-      newPlace: event.currentTarget.value
-    });
-  }
-
-  onDateChange(event) {
-    this.setState({
-      newDate: event.currentTarget.value
-    });
-  }
-
-  onTimeChange(event) {
-    this.setState({
-      newTime: event.currentTarget.value
-    });
+  onEventFieldChange(field, event) {
+    const value = event.currentTarget.value;
+    switch (field) {
+      case 'name':
+        this.setState({ newName: value });
+        break;
+      case 'place':
+        this.setState({ newPlace: value });
+        break;
+      case 'date':
+        this.setState({ newDate: value });
+        break;
+      case 'time':
+        this.setState({ newTime: value });
+        break;
+      default:
+        break;
+    }
   }
 
   onEventAdd(event) {
@@ -119,10 +115,7 @@ class Events extends React.Component {
                   place={this.state.newPlace}
                   date={this.state.newDate}
                   time={this.state.newTime}
-                  onNameChange={this.onNameChange.bind(this)}
-                  onPlaceChange={this.onPlaceChange.bind(this)}
-                  onDateChange={this.onDateChange.bind(this)}
-                  onTimeChange={this.onTimeChange.bind(this)}
+                  onFieldChange={this.onEventFieldChange.bind(this)}
                   onFormSubmit={this.onEventAdd.bind(this)}
         />
       </div>
