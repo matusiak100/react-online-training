@@ -51,36 +51,24 @@ class Events extends React.Component {
     });
   };
 
-  onNameChange(event) {
+  onEventFieldChange(field, event) {
     const value = event.currentTarget.value;
-    this.setState({
-      newName: value,
-      newNameValid: value.length > 0
-    });
-  }
-
-  onPlaceChange(event) {
-    const value = event.currentTarget.value;
-    this.setState({
-      newPlace: value,
-      newPlaceValid: value.length > 0
-    });
-  }
-
-  onDateChange(event) {
-    const value = event.currentTarget.value;
-    this.setState({
-      newDate: value,
-      newDateValid: value.length > 0
-    });
-  }
-
-  onTimeChange(event) {
-    const value = event.currentTarget.value;
-    this.setState({
-      newTime: value,
-      newTimeValid: value.length > 0
-    });
+    switch (field) {
+      case 'name':
+        this.setState({ newName: value, newNameValid: value.length > 0 });
+        break;
+      case 'place':
+        this.setState({ newPlace: value, newPlaceValid: value.length > 0 });
+        break;
+      case 'date':
+        this.setState({ newDate: value, newDateValid: value.length > 0 });
+        break;
+      case 'time':
+        this.setState({ newTime: value, newTimeValid: value.length > 0 });
+        break;
+      default:
+        break;
+    }
   }
 
   onEventAdd(event) {
@@ -135,10 +123,7 @@ class Events extends React.Component {
                   placeValid={this.state.newPlaceValid}
                   dateValid={this.state.newDateValid}
                   timeValid={this.state.newTimeValid}
-                  onNameChange={this.onNameChange.bind(this)}
-                  onPlaceChange={this.onPlaceChange.bind(this)}
-                  onDateChange={this.onDateChange.bind(this)}
-                  onTimeChange={this.onTimeChange.bind(this)}
+                  onFieldChange={this.onEventFieldChange.bind(this)}
                   onFormSubmit={this.onEventAdd.bind(this)}
         />
       </div>
