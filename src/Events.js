@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const renderEvents = (events) => {
+const Events = (props) => {
   return (
     <ul>
-      {events.map(item => {
+      {props.events.map(item => {
         const date = new Date(item.date);
 
         if (date >= Date.now()) {
@@ -22,4 +23,8 @@ const renderEvents = (events) => {
   );
 };
 
-export default renderEvents;
+Events.propTypes = {
+  events: PropTypes.array.isRequired
+}
+
+export default Events;
