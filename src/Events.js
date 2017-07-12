@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Events = (props) => {
   return (
@@ -22,9 +21,5 @@ const Events = (props) => {
     </ul>
   );
 };
-
-Events.propTypes = {
-  events: PropTypes.array.isRequired
-}
 
 export default Events;
