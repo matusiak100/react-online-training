@@ -2,6 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import events from './data/events.json';
-import renderEvents from './Events';
+import getEvents from './Events';
 
-ReactDOM.render(renderEvents(events), document.getElementById('root'));
+ReactDOM.render(getEvents(events), document.getElementById('root'));

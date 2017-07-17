@@ -1,6 +1,6 @@
 import React from 'react';
 
-const renderEvents = (events) => {
+const getEvents = (events) => {
   return (
     <ul>
       {events.map(item => {
@@ -22,4 +22,4 @@ const renderEvents = (events) => {
   );
 };
 
-export default renderEvents;
+export default getEvents;
