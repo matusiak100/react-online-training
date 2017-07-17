@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import events from './data/events.json';
 
-const getItems = () => {
+const getEvents = () => {
   return (
     <ul>
       {events.map(item => {
@@ -26,4 +26,4 @@ const getItems = () => {
   );
 };
 
-ReactDOM.render(getItems(), document.getElementById('root'));
+ReactDOM.render(getEvents(), document.getElementById('root'));
