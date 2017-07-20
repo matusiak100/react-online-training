@@ -49,22 +49,9 @@ class Events extends React.Component {
 
   onEventFieldChange(field, event) {
     const value = event.currentTarget.value;
-    switch (field) {
-      case 'name':
-        this.setState({ newName: value });
-        break;
-      case 'place':
-        this.setState({ newPlace: value });
-        break;
-      case 'date':
-        this.setState({ newDate: value });
-        break;
-      case 'time':
-        this.setState({ newTime: value });
-        break;
-      default:
-        break;
-    }
+    this.setState({
+      [field]: value
+    });
   }
 
   onEventAdd(event) {
