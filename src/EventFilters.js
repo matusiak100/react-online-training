@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const EventFilters = (props) => {
-  return <input type="text" onChange={props.onFilterChange} placeholder="filtruj..." />
+  return (
+    <form>
+      <input type="text" value={props.filter} onChange={props.onFilterChange} placeholder="filtruj..." />
+    </form>
+  );
 };
 
 EventFilters.propTypes = {
+  filter: PropTypes.string.isRequired,
   onFilterChange: PropTypes.func.isRequired
 };
 
