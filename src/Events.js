@@ -100,7 +100,7 @@ class Events extends React.Component {
   render() {
     return (
       <div>
-        <EventFilters onFilterChange={this.onFilterChange.bind(this)} />
+        <EventFilters filter={this.state.filter} onFilterChange={this.onFilterChange.bind(this)} />
         <ul>
           {this.state.events.map(item => {
             const date = new Date(item.date);
