@@ -1,8 +1,9 @@
 import React from 'react';
-import events from './data/events';
+//import events from './data/events';
 import EventItem from './EventItem';
 import EventFilters from './EventFilters';
 import EventAdd from './EventAdd';
+import fetch from 'isomorphic-fetch';
 
 class Events extends React.Component {
   constructor(props) {
@@ -22,9 +23,13 @@ class Events extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      events
-    });
+    fetch('http://frontendinsights.com/events.json')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          events: data
+        });
+      })
   }
 
   onClearClicked(event) {
