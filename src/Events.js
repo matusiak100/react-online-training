@@ -1,15 +1,16 @@
 import React from 'react';
-//import events from './data/events';
 import EventItem from './EventItem';
 import EventFilters from './EventFilters';
 import EventAdd from './EventAdd';
 import fetch from 'isomorphic-fetch';
+import Loader from './common/Loader';
 
 class Events extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       events: [],
+      isLoading: true,
       filter: '',
       newName: '',
       newNameValid: false,
@@ -27,7 +28,8 @@ class Events extends React.Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          events: data
+          events: data,
+          isLoading: false
         });
       })
   }
@@ -100,19 +102,21 @@ class Events extends React.Component {
     return (
       <div>
         <EventFilters filter={this.state.filter} onFilterChange={this.onFilterChange.bind(this)} />
-        <ul>
-          {this.state.events.map(item => {
-            const date = new Date(item.date);
+        <Loader isLoading={this.state.isLoading}>
+          <ul>
+            {this.state.events.map(item => {
+              const date = new Date(item.date);
 
-            if (date >= Date.now() && item.name.indexOf(this.state.filter) > -1) {
-              return (
-                <EventItem {...item} key={item.id} onDeleteClicked={this.onDeleteClicked.bind(this)} />
-              );
-            }
+              if (date >= Date.now() && item.name.indexOf(this.state.filter) > -1) {
+                return (
+                  <EventItem {...item} key={item.id} onDeleteClicked={this.onDeleteClicked.bind(this)} />
+                );
+              }
 
-            return null;
-          })}
-        </ul>
+              return null;
+            })}
+          </ul>
+        </Loader>
         <button onClick={this.onClearClicked.bind(this)}>Wyczyść</button>
         <EventAdd name={this.state.newName}
                   place={this.state.newPlace}
